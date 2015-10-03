@@ -1,0 +1,22 @@
+Haga un paquete en integration services que:
+* declare 3 variables a, b, c del tipo double (input)
+* declare 3 variables x1, x2, w del tipo double (output)
+* calcule las respuestas de la ecuación de la forma ax^2+bx+c=0 con a <> 0
+
+* w = b^2-4*a*c
+
+si w >= 0, entonces
+
+       -b+sqrt(w)
+* x1 = -----------
+           2a
+
+       -b-sqrt(w)
+* x2 = -----------
+           2a
+
+a	b	c	DISC	X1	X2
+1	2	-8	36		2	-4
+
+
+si w < 0 muestre un mensaje de error con el valor de w
