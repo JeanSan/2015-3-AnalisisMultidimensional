@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExtractTransformLoad"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{8867C8BE-6477-44CA-B498-49D1A4D2075E}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{5961EC8D-770C-4BC2-8FC1-6993ECB8001F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -803,6 +803,13 @@
           Size="550,56"
           Id="68925948-8a73-461d-ada0-f73a53a2f4a5"
           TopLeft="90,80" />
+        <AnnotationLayout
+          Text="TAREA MORAL:&#xD;&#xA;Con base en el archivo que se generó despuésde haber modificado el formato de la fecha, realice lo siguiente:&#xD;&#xA;* cree una tabla diferente a la que se utilizó en clase que tenga campos adicionales para los siguientes elementos.&#xD;&#xA;* lea los campos del archivo y convierta la fecha que NO es reconocida en el formato del sistema operativo para que&#xD;&#xA;   SÍ sea convertida como fecha.&#xD;&#xA;* separe el monto del salario en dos campos enteros:  parte entera y parte decimal&#xD;&#xA;* obtenga todos los nombres de los días de la semana (reemplazar el TODO)"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="644,136"
+          Id="c791fde0-b219-42b3-bc85-f67f58fd8e93"
+          TopLeft="175,212.857142857143" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

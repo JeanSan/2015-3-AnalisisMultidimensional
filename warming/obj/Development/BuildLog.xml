@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>warming</Name>
-    <LastWriteTime>2015-10-10T02:18:08.6846858Z</LastWriteTime>
+    <LastWriteTime>2015-10-17T00:39:50.2676785Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -23,7 +23,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ExtractTransformLoad.dtsx</Name>
-      <LastWriteTime>2015-10-10T02:18:08.6776637Z</LastWriteTime>
+      <LastWriteTime>2015-10-10T02:27:18.4028178Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ExtractTransformLoadVariable.dtsx</Name>
+      <LastWriteTime>2015-10-17T00:42:35.4560324Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
