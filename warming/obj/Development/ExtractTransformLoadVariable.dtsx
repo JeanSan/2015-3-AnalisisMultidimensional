@@ -1,0 +1,1000 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/9/2015 6:25:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAB09-12"
+  DTS:CreatorName="ULATINA0\laboratorio"
+  DTS:DTSID="{C20F50A5-F7A8-4EB1-B482-62AFF7B8AC4B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ExtractTransformLoadVariable"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{0558BF64-5547-4F3C-BC53-8B137E02C4F1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[leer archivo de texto]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{874C3F05-94F5-4848-9407-A428FB22E81E}"
+      DTS:ObjectName="leer archivo de texto">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::Path] + @[User::NombreArchivo]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Oracle VM\prueba-etl.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="131"
+              DTS:DataPrecision="10"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna1"
+              DTS:DTSID="{20A986B3-772D-4BD5-82C7-754CBE64E3F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna2"
+              DTS:DTSID="{BBA5491E-10B4-4FD8-AD7A-0B8BBD33FCB7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna3"
+              DTS:DTSID="{D68992B9-D515-44B1-9F78-75F2C2354B95}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="131"
+              DTS:DataPrecision="15"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna4"
+              DTS:DTSID="{482CFF08-5EF5-460F-A584-A97CBA1DBADD}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.MyDb]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{ED5EF678-0A15-42D3-A628-A586816AB9F2}"
+      DTS:ObjectName="localhost.MyDb">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=MyDb;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{68C76634-7BAF-4DAB-AE1D-63A02631D4E5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NombreArchivo">
+      <DTS:VariableValue
+        DTS:DataType="8">prueba-etl.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{88A96F4E-91E3-49D5-AD51-4A445559CEAB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Path">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\Oracle VM\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Cargar archivo y guardarlo en sql server"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F598E6B0-B512-4F25-8873-156C722370BD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargar archivo y guardarlo en sql server"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="cargar archivo texto"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[leer archivo de texto]"
+                  connectionManagerRefId="Package.ConnectionManagers[leer archivo de texto]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna1]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna1]"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna1]"
+                      name="Columna1"
+                      precision="10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna2]"
+                      length="50"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna2]"
+                      name="Columna2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna3]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna3]"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna3]"
+                      name="Columna3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna4]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna4]"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna4]"
+                      name="Columna4"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna1]"
+                      dataType="numeric"
+                      name="Columna1"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Columna2" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna3]"
+                      dataType="dbTimeStamp"
+                      name="Columna3" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].ExternalColumns[Columna4]"
+                      dataType="numeric"
+                      name="Columna4"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="concatene al nombre de la persona el nombre del día de la semana"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Inputs[Derived Column Input].Columns[NombreMayuscula]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NombreMayuscula"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Output].Columns[NombreMayuscula]" />
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Inputs[Derived Column Input].Columns[NombreDiaDeLaSemana]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NombreDiaDeLaSemana"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NombreDiaDeLaSemana]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Output].Columns[NombreCompleto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Output].Columns[NombreCompleto]"
+                      name="NombreCompleto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Output].Columns[NombreMayuscula]} + "-" + #{Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NombreDiaDeLaSemana]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NombreMayuscula + "-" + NombreDiaDeLaSemana</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="convierta el nombre a mayúsculas"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Inputs[Derived Column Input].Columns[Columna2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Columna2"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Output].Columns[NombreMayuscula]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Output].Columns[NombreMayuscula]"
+                      name="NombreMayuscula"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[UPPER](#{Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna2]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)UPPER(Columna2)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="guardar en sql server"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[PrimeraCarga]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.MyDb]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.MyDb]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input]"
+                  hasSideEffects="true"
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].Columns[Columna1]"
+                      cachedDataType="numeric"
+                      cachedName="Columna1"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna1]" />
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].Columns[Columna3]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Columna3"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[FechaNacimiento]"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna3]" />
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].Columns[NombreCompleto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NombreCompleto"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Output].Columns[NombreCompleto]" />
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].Columns[Columna4]"
+                      cachedDataType="numeric"
+                      cachedName="Columna4"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[Salario]"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna4]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[Id]"
+                      dataType="numeric"
+                      name="Id"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[FechaNacimiento]"
+                      dataType="dbTimeStamp"
+                      name="FechaNacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input].ExternalColumns[Salario]"
+                      dataType="numeric"
+                      name="Salario"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Obtenga el nombre del día de la semana en que nació la persona"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Inputs[Derived Column Input].Columns[NumeroDiaDeLaSemana]"
+                      cachedDataType="i4"
+                      cachedName="NumeroDiaDeLaSemana"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NumeroDiaDeLaSemana]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NombreDiaDeLaSemana]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NombreDiaDeLaSemana]"
+                      name="NombreDiaDeLaSemana"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NumeroDiaDeLaSemana]} == 1 ? "Domingo" : #{Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NumeroDiaDeLaSemana]} == 2 ? "Lunes" : "TODO"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NumeroDiaDeLaSemana == 1 ? "Domingo" : NumeroDiaDeLaSemana == 2 ? "Lunes" : "TODO"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Obtenga el número del día de la semana en que nació la persona"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Inputs[Derived Column Input].Columns[Columna3]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Columna3"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna3]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NumeroDiaDeLaSemana]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Output].Columns[NumeroDiaDeLaSemana]"
+                      name="NumeroDiaDeLaSemana"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("weekday",#{Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output].Columns[Columna3]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("weekday",Columna3)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output]"
+              endId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output1]"
+              endId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output2]"
+              endId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output3]"
+              endId="Package\Cargar archivo y guardarlo en sql server\guardar en sql server.Inputs[SQL Server Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Cargar archivo y guardarlo en sql server.Paths[Flat File Source Output]"
+              endId="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="268,42"
+          Id="Package\Cargar archivo y guardarlo en sql server"
+          TopLeft="253.846153846154,147.692307692308" />
+        <AnnotationLayout
+          Text="Este paquete se encarga de demostrar cómo se lee un archivo de texto y se graba en una tabla en &#xA;SQL Server"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="550,56"
+          Id="68925948-8a73-461d-ada0-f73a53a2f4a5"
+          TopLeft="90,80" />
+        <AnnotationLayout
+          Text="TAREA MORAL:&#xA;Con base en el archivo que se generó despuésde haber modificado el formato de la fecha, realice lo siguiente:&#xA;* cree una tabla diferente a la que se utilizó en clase que tenga campos adicionales para los siguientes elementos.&#xA;* lea los campos del archivo y convierta la fecha que NO es reconocida en el formato del sistema operativo para que&#xA;   SÍ sea convertida como fecha.&#xA;* separe el monto del salario en dos campos enteros:  parte entera y parte decimal&#xA;* obtenga todos los nombres de los días de la semana (reemplazar el TODO)"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="644,136"
+          Id="c791fde0-b219-42b3-bc85-f67f58fd8e93"
+          TopLeft="175,212.857142857143" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Cargar archivo y guardarlo en sql server">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="386,42"
+          Id="Package\Cargar archivo y guardarlo en sql server\Obtenga el número del día de la semana en que nació la persona"
+          TopLeft="348.333333333333,179.166666666667" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Cargar archivo y guardarlo en sql server\guardar en sql server"
+          TopLeft="454.884615384615,470.653846153846" />
+        <NodeLayout
+          Size="396,42"
+          Id="Package\Cargar archivo y guardarlo en sql server\concatene al nombre de la persona el nombre del día de la semana"
+          TopLeft="346.5,381" />
+        <NodeLayout
+          Size="386,42"
+          Id="Package\Cargar archivo y guardarlo en sql server\Obtenga el nombre del día de la semana en que nació la persona"
+          TopLeft="347.5,277.5" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\Cargar archivo y guardarlo en sql server\convierta el nombre a mayúsculas"
+          TopLeft="430.166666666667,94.3333333333333" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Cargar archivo y guardarlo en sql server\cargar archivo texto"
+          TopLeft="468,6" />
+        <EdgeLayout
+          Id="Package\Cargar archivo y guardarlo en sql server.Paths[Flat File Source Output]"
+          TopLeft="552.083333333333,48">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3333333333333"
+              Start="0,0"
+              End="0,38.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output3]"
+          TopLeft="544.442307692308,423">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.653846153846"
+              Start="0,0"
+              End="0,40.153846153846">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.153846153846" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output2]"
+          TopLeft="542.5,319.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.5"
+              Start="0,0"
+              End="0,54">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output1]"
+          TopLeft="540.916666666667,221.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.3333333333333"
+              Start="0,0"
+              End="0,48.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar archivo y guardarlo en sql server.Paths[Derived Column Output]"
+          TopLeft="549.666666666667,136.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.33333333333394,42.8333333333337"
+              Start="0,0"
+              End="-8.33333333333394,35.3333333333337">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.4166666666668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.4166666666668"
+                    Point2="0,21.4166666666668"
+                    Point3="-4,21.4166666666668" />
+                  <mssgle:LineSegment
+                    End="-4.33333333333394,21.4166666666668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.33333333333394,21.4166666666668"
+                    Point2="-8.33333333333394,21.4166666666668"
+                    Point3="-8.33333333333394,25.4166666666668" />
+                  <mssgle:LineSegment
+                    End="-8.33333333333394,35.3333333333337" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar archivo y guardarlo en sql server\guardar en sql server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
