@@ -1,0 +1,4 @@
+Columna1;Columna2;Columna3;Columna4;Columna5
+74784;hector fernandez;1972-04-08;1234.34;M
+9123;alberta einstein;1879-03-14;78234.78;F
+123;boris becker;1970-12-12;78934789.53;M
