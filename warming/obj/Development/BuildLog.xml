@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>warming</Name>
-    <LastWriteTime>2015-10-17T01:33:56.4899856Z</LastWriteTime>
+    <LastWriteTime>2015-10-24T01:53:09.6098812Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -34,6 +34,21 @@
     <ProjectBuildItemInfo>
       <Name>ETLSplit.dtsx</Name>
       <LastWriteTime>2015-10-17T01:35:05.8661781Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>FlowExample.dtsx</Name>
+      <LastWriteTime>2015-10-24T00:56:49.197921Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>FlowExampleVariable.dtsx</Name>
+      <LastWriteTime>2015-10-24T01:26:36.3981967Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>ETLUnionAll.dtsx</Name>
+      <LastWriteTime>2015-10-24T02:22:04.6120648Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
